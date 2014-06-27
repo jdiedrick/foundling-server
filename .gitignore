@@ -1,0 +1,10 @@
+*.swp
+*~
+deploy_ec2.sh
+foundling_globals.py
+foundling_globals.pyc
+env/
+include/
+Procfile
+deploy.sh
+.Python

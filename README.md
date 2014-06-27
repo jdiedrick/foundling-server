@@ -1,4 +1,6 @@
-Foundling Server:
+Foundling Server
+
+Current URL: http://ec2-107-20-106-161.compute-1.amazonaws.com/
 
 You should create your own foundling_globals.py and populate it with your:
 
@@ -11,14 +13,6 @@ mongo_db
 Right now its possible to save files to Amazon S3, and retreive a JSON object containing all of the foundlings (geo-tagged sounds, with a URL for the WAV file, and the latitude and longitude for where they were recorded).
 
 Deployment instructions to come
-
-To-do:
-
-Write JSON to MongoDB from client (iOS)
-
-Receive WAV from client (iOS)
-
-Generate web-based map (most of this code was backed up)
 
 --
 
