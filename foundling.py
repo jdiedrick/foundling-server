@@ -25,6 +25,7 @@ class Application(tornado.web.Application):
                                 (r"/", IndexHandler),
 				(r"/sounds", SoundsHandler),
                                 (r"/uploadwav", UploadWAVHandler),
+				(r"/map", MapHandler)
                                 ]
 
                 settings = dict(
@@ -82,6 +83,11 @@ class SoundsHandler(tornado.web.RequestHandler):
 		sounds = { "sounds": all_sounds } #iteration complete, add all sounds to sounds dictionary
 		self.write(json.dumps(sounds, default=json_util.default)) #write json
 		self.finish() #finish
+
+class MapHandler(tornado.web.RequestHandler):
+	def get(self):
+		self.set_header("Access-Control-Allow-Origin", "*") 
+		self.render("map.html")
 
 if __name__ == "__main__":
         tornado.options.parse_command_line()
