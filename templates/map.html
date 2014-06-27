@@ -14,7 +14,7 @@
 
 	//receive locations from geoimgjson
 	var locations = []; 
-	$.getJSON('http://ec2-54-242-125-236.compute-1.amazonaws.com:8000/sounds', function(data) {
+	$.getJSON('http://ec2-107-20-106-161.compute-1.amazonaws.com/sounds', function(data) {
 	$.each(data['sounds'], function(i, row) {
 	locations = data['sounds'];	
 	console.log(locations);
