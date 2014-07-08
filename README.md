@@ -10,6 +10,8 @@ aws_secret_key
 
 mongo_db
 
+foundling_aws_base_url
+
 Right now its possible to save files to Amazon S3, and retreive a JSON object containing all of the foundlings (geo-tagged sounds, with a URL for the WAV file, and the latitude and longitude for where they were recorded).
 
 Deployment instructions to come

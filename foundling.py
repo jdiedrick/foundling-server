@@ -14,7 +14,7 @@ import boto
 from boto.s3.connection import S3Connection
 from boto.s3.key import Key
 
-from foundling_globals import aws_public_key, aws_secret_key, mongo_db
+from foundling_globals import aws_public_key, aws_secret_key, mongo_db, foundling_aws_base_url
 
 define("port", default=8000, help="run on the given port", type=int)
 
@@ -52,6 +52,7 @@ class UploadWAVHandler(tornado.web.RequestHandler):
 
 	def get(self):
 		self.render('wavupload.html')
+
 	def post(self):
 		wav = self.request.files['wav'][0] #wav post data from form
 		wavbody = wav['body'] #body of wav file
@@ -88,6 +89,21 @@ class MapHandler(tornado.web.RequestHandler):
 	def get(self):
 		self.set_header("Access-Control-Allow-Origin", "*") 
 		self.render("map.html")
+
+class ReceiveJSONHandler(tornado.web.RequestHandler):
+	def get(self):
+		self.write('ready to receive json')
+	def post(self):
+		data_json = tornado.escape.json_decode(self.request.body)
+		coll = self.application.db.sounds
+		sound = dict()
+		sound['latitude'] = data_json['latitude']
+		sound['longitude'] = data_json['longitude']
+		sound['sound_url'] = foundling_aws_base_url + "sound_" + data_json['sound_date'] + ".wav"
+		print sound
+		coll.insert(sound)
+		#print data_json
+		#self.redirect('/receivejson')
 
 if __name__ == "__main__":
         tornado.options.parse_command_line()
