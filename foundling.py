@@ -25,7 +25,8 @@ class Application(tornado.web.Application):
                                 (r"/", IndexHandler),
 				(r"/sounds", SoundsHandler),
                                 (r"/uploadwav", UploadWAVHandler),
-				(r"/map", MapHandler)
+				(r"/map", MapHandler),
+				(r"/receivejson, ReceiveJSONHandler)
                                 ]
 
                 settings = dict(
